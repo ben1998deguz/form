@@ -32,7 +32,7 @@
 
 .cbo-header {
     display: flex;
-    height: 187px;
+    height: 152px;
     position: relative;
     z-index: 300;
     text-align: center;
@@ -43,8 +43,8 @@
 .header-steps {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 250px;
+  width: 360px;
+  height: 350px;
   justify-content: center;
   background-color: #ee7101;
 }

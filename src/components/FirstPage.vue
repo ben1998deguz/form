@@ -19,28 +19,33 @@
       <b-form-group class="form-step step-1 step-active w-100">
         <h3>Banque *</h3>
         <b-button-group>
-          <b-form-select class="form-button" v-model="selected" :options="options" placeholder="vmi"></b-form-select>
+          <b-form-select class="form-button" v-model="selectedBank" :options="optionsBank"></b-form-select>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100">
         <h3>Montant emprunté*</h3>
         <b-button-group>
          <input type="text" class="form-input" />
-         <span>&#8364;</span>
+         <span id="euro">&#8364;</span>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100">
         <h3>OTaux d'intérêt*</h3>
         <b-button-group>
            <input type="text" class="form-input" />
+           <span id="percent">&#37;</span>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100">
-        <h3>Objet de l'emprunt*</h3>
+        <h3>Durée totale du prêt*</h3>
         <b-button-group>
-          <b-button>Button 1</b-button>
-          <b-button>Button 2</b-button>
-          <b-button>Button 3</b-button>
+          <b-form-select class="form-button" v-model="selectedTime" :options="optionsTime"></b-form-select>
+        </b-button-group>
+        <b-button-group>
+          <b-button class="form-button">
+            Etape suivante
+            <b-icon icon="arrow-right"></b-icon>
+          </b-button>
         </b-button-group>
       </b-form-group>
     </b-form>
@@ -59,8 +64,9 @@ export default {
     isActive: (state) => state.form.step1.isActive,
   }),
   data: () => ({
-    selected: null,
-    options: [
+    selectedBank: null,
+    selectedTime: null,
+    optionsBank: [
     { value: null, text: "Rechercher l'organisme" },
     { value: 'axa_banque', text: "AXA Bank" },
     { value: 'cdt_nord_courtois', text: "Courtois Bank" },
@@ -68,6 +74,39 @@ export default {
     { value: 'cdt_nord_laydernier', text: "Laydernier Bank" },
     { value: 'cdt_nord_nuger', text: "Bank Nuger" },
     { value: 'BQ_PALATINE', text: "Palatine Bank" }
+    ],
+    optionsTime: [
+      { value: null, text: "choisir" },
+      { value: '1', text: "1 ans" },
+      { value: '2', text: "2 ans" },
+      { value: '3', text: "3 ans" },
+      { value: '4', text: "4 ans" },
+      { value: '5', text: "5 ans" },
+      { value: '6', text: "6 ans" },
+      { value: '7', text: "7 ans" },
+      { value: '8', text: "8 ans" },
+      { value: '9', text: "9 ans" },
+      { value: '10', text: "10 ans" },
+      { value: '11', text: "11 ans" },
+      { value: '12', text: "12 ans" },
+      { value: '13', text: '13 ans' },
+      { value: '14', text: '14 ans' },
+      { value: '15', text: '15 ans' },
+      { value: '16', text: '16 ans' },
+      { value: '17', text: '17 ans' },
+      { value: '18', text: '18 ans' },
+      { value: '19', text: '19 ans' },
+      { value: '20', text: '20 ans' },
+      { value: '21', text: '21 ans' },
+      { value: '22', text: '22 ans' },
+      { value: '23', text: '23 ans' },
+      { value: '24', text: '24 ans' },
+      { value: '25', text: '25 ans' },
+      { value: '26', text: '26 ans' },
+      { value: '27', text: '27 ans' },
+      { value: '28', text: '28 ans' },
+      { value: '29', text: '29 ans' },
+      { value: '30', text: '30 ans' }
     ]
   }),
   methods: {
@@ -134,8 +173,12 @@ export default {
   border-color: #004161 !important;
 }
 
-span {
+#euro {
   content: "\20AC";
+}
+
+#percent {
+  content: "\0025";
 }
 </style>
 
