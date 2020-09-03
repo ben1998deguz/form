@@ -5,9 +5,9 @@
           <h1 class="steps-title" style="color: white">ESTIMEZ VOTRE ASSURANCE DE PRÊT IMMOBILIER</h1>
           <div class="steps-lists">
             <div class="steps-list">
-                <button :class="step1 ? 'clickable active list-el':'list-el'"><span>1</span></button>
-                <button :class="step2 ? 'clickable active list-el':'list-el'"><span>2</span></button>
-                <button :class="step3 ? 'clickable active list-el':'list-el'"><span>3</span></button>
+                <button class="list-el"><span>1</span></button>
+                <button class="list-el white"><span>2</span></button>
+                <button class="list-el white"><span>3</span></button>
             </div>
             <div class="steps-current">
               <span>Votre projet</span>
@@ -32,7 +32,7 @@
 
 .cbo-header {
     display: flex;
-    height: 192px;
+    height: 187px;
     position: relative;
     z-index: 300;
     text-align: center;
@@ -46,7 +46,7 @@
   width: 300px;
   height: 250px;
   justify-content: center;
-  background-color: #c9d200;
+  background-color: #ee7101;
 }
 
 .steps-lists {
@@ -62,15 +62,22 @@
   width: 73px;
   margin-left: 10px;
   border-radius: 999px;
-  background-color: #004161;
+  background-color: #ee7101;
   border-color: #004161;
   color: white;
+  margin-top:15px;
   margin-bottom: 15px;
   font-size: 44px;
 }
 
 .steps-current {
   font-family: sans-serif;
+  color: #004161;
+}
+
+.white {
+  background-color: white;
+  border-color: #ee7101;
   color: #004161;
 }
 
