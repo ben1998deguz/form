@@ -1,22 +1,20 @@
 <template>
   <div>
-    <a href="https://www.april.fr/assurance-pret">
-     <header class="cbo-header">
-        <div class="header-steps">
-            <h1 class="steps-title" style="color: white">ESTIMEZ VOTRE ASSURANCE DE PRÊT IMMOBILIER</h1>
-            <div class="steps-lists">
-              <div class="steps-list">
-                  <button :class="step1 ? 'clickable active list-el':'list-el'"><span>1</span></button>
-                  <button :class="step2 ? 'clickable active list-el':'list-el'"><span>2</span></button>
-                  <button :class="step3 ? 'clickable active list-el':'list-el'"><span>3</span></button>
-              </div>
-              <div class="steps-current">
-                <span style="color: #F04C5D">Votre projet</span>
-              </div>
+    <header class="cbo-header">
+      <div class="header-steps">
+          <h1 class="steps-title" style="color: white">ESTIMEZ VOTRE ASSURANCE DE PRÊT IMMOBILIER</h1>
+          <div class="steps-lists">
+            <div class="steps-list">
+                <button :class="step1 ? 'clickable active list-el':'list-el'"><span>1</span></button>
+                <button :class="step2 ? 'clickable active list-el':'list-el'"><span>2</span></button>
+                <button :class="step3 ? 'clickable active list-el':'list-el'"><span>3</span></button>
             </div>
-        </div>
-      </header>
-    </a>
+            <div class="steps-current">
+              <span>Votre projet</span>
+            </div>
+          </div>
+      </div>
+    </header>
   </div>
 </template>
 
@@ -25,7 +23,8 @@
 </script>
 
 <style>
-  * {
+
+* {
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -33,11 +32,11 @@
 
 .cbo-header {
     display: flex;
-    height: 146px;
+    height: 192px;
     position: relative;
     z-index: 300;
     text-align: center;
-    background-color: lightgray;
+    background-color: white;
     justify-content: center;
 }
 
@@ -53,6 +52,7 @@
 .steps-lists {
   background-color: #fff;
   height: 200px;
+  cursor: none;
 }
 
 .list-el {
@@ -67,6 +67,11 @@
   color: white;
   margin-bottom: 15px;
   font-size: 44px;
+}
+
+.steps-current {
+  font-family: sans-serif;
+  color: #004161;
 }
 
 </style>
