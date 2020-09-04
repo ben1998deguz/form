@@ -62,6 +62,7 @@ export default {
     this.$store.dispatch('form/handlers14', true)
     this.$store.dispatch('form/handlers15', false)
     this.$store.dispatch('form/handlers16', false)
+    this.$store.dispatch('form/bankesRequest')
   },
   data: () => ({
     selectedBank: null,
@@ -202,6 +203,7 @@ export default {
   color: #004161 !important;
   background-color: white !important;
   border-color: #ee7101 !important;
+  margin-bottom: 15px;
 }
 
 .form-button:hover {
@@ -257,11 +259,15 @@ export default {
   top: 60px;
   z-index: 999;
   background-color: white;
-  height: 60%;
+  height: 80%;
 }
 
 select option {
   background-color: white;
+}
+
+h3 {
+  margin-bottom: 35px !important;
 }
 </style>
 

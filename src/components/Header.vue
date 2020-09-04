@@ -5,8 +5,8 @@
           <h1 class="steps-title">ESTIMEZ VOTRE ASSURANCE DE PRÊT IMMOBILIER</h1>
           <div class="steps-lists">
             <div class="steps-list">
-                <button class="list-el" :class="{ active: isActive1 }"><span>1</span></button>
-                <button class="list-el" :class="{ active: isActive2 }"><span>2</span></button>
+                <button @click="location1()" class="list-el" :class="{ active: isActive1 }"><span>1</span></button>
+                <button @click='location2()' class="list-el" :class="{ active: isActive2 }"><span>2</span></button>
                 <button class="list-el" :class="{ active: isActive3 }"><span>3</span></button>
             </div>
             <div class="steps-current">
@@ -27,6 +27,14 @@ export default {
     isActive2: (state) => state.form.isActive2,
     isActive3: (state) => state.form.isActive3,
   }),
+  methods: {
+    location1() {
+      this.$router.push('/')
+    },
+    location2() {
+      this.$router.push('/secondPage')
+    },
+  }
 }
 </script>
 

@@ -1,23 +1,22 @@
+import axios from 'axios'
+
 export default {
   namespaced: true,
   state: {
     data: {
       step1: {
-        target1: '',
-        target2: '',
-        target3: '',
-        nature1: '',
-        nature2: '',
-        selectedBank: null,
-        euro: '',
-        percent: '',
-        selectedTime: '',
+        target: '',
+        project: '',
+        bank: null,
+        amount: '',
+        interest: '',
+        duration: '',
       },
       step2: {
-        celander: '',
-        referenceNumber: '',
-        selectedProfessional: null,
-        selectedCheck: null
+        dob: '',
+        postalcode: '',
+        profession: null,
+        smoker: null
       }
     },
     isActive1: true,
@@ -26,43 +25,34 @@ export default {
   },
   mutations: {
     setButton1(state, payload) {
-      state.data.step1.target1 = payload;
-    },
-    setButton2(state, payload) {
-      state.data.step1.target2 = payload;
-    },
-    setButton3(state, payload) {
-      state.data.step1.target3 = payload;
+      state.data.step1.target = payload;
     },
     setButton4(state, payload) {
-      state.data.step1.nature1 = payload;
-    },
-    setButton5(state, payload) {
-      state.data.step1.nature2 = payload;
+      state.data.step1.project = payload;
     },
     setButton6(state, payload) {
-      state.data.step1.selectedBank = payload;
+      state.data.step1.bank = payload;
     },
     setButton7(state, payload) {
-      state.data.step1.euro = payload;
+      state.data.step1.amount = payload;
     },
     setButton8(state, payload) {
-      state.data.step1.selectedTime = payload;
+      state.data.step1.duration = payload;
     },
     setButton9(state, payload) {
-      state.data.step1.percent = payload;
+      state.data.step1.interest = payload;
     },
     setButton10(state, payload) {
-      state.data.step2.celander = payload;
+      state.data.step2.dob = payload;
     },
     setButton11(state, payload) {
-      state.data.step2.referenceNumber = payload;
+      state.data.step2.postalcode = payload;
     },
     setButton12(state, payload) {
-      state.data.step2.selectedProfessional = payload;
+      state.data.step2.profession = payload;
     },
     setButton13(state, payload) {
-      state.data.step2.selectedCheck = payload;
+      state.data.step2.smoker = payload;
     },
     setButton14(state, payload) {
       state.isActive1 = payload;
@@ -83,11 +73,11 @@ export default {
       console.log(data)
     },
     handlers2(context, data) {
-      context.commit('setButton2', data)
+      context.commit('setButton1', data)
       console.log(data)
     },
     handlers3(context, data) {
-      context.commit('setButton3', data)
+      context.commit('setButton1', data)
       console.log(data)
     },
     handlers4(context, data) {
@@ -95,7 +85,7 @@ export default {
       console.log(data)
     },
     handlers5(context, data) {
-      context.commit('setButton5', data)
+      context.commit('setButton4', data)
       console.log(data)
     },
     handlers6(context, data) {
@@ -141,15 +131,15 @@ export default {
     handlers16(context, data) {
       context.commit('setButton16', data)
       console.log(data)
-    }
-   /*  async bankesRequest(context) {
+    },
+    async bankesRequest() {
       try {
-        const result = await axios.get('https://tapmont.com/wp-json/restapi/v1/banks', {headers: {"x-dsi-restful":1}})
-        context.commit('setBankes', result.data)
+        const result = await axios.post('https://tapmont.com/wp-json/restapi/v1/product-recommendations', this.state.data )
+        // context.commit('setBankes', result.data)
         console.log(result.data)
       } catch(error) {
         console.log(error)
       }
-    } */
+    }
   },
 };

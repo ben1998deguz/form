@@ -28,8 +28,8 @@
       <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive1Step3 }">
         <h3>Durée totale du prêt*</h3>
         <b-form-checkbox-group v-model="selectedCheck">
-          <b-form-checkbox @change="active4()" value="Non">Non</b-form-checkbox>
-          <b-form-checkbox @change="active4()" value="Oui">Oui</b-form-checkbox>
+          <b-form-checkbox @change="active4()" value="false">Non</b-form-checkbox>
+          <b-form-checkbox @change="active4()" value="true">Oui</b-form-checkbox>
         </b-form-checkbox-group>
       </b-form-group>
        <b-form-group class="form-step step-1 w-100" :class="{ zeroMargin: isActive1Step4 }">
@@ -50,6 +50,11 @@
 
 export default {
   name: 'secondPage',
+  created() {
+    this.$store.dispatch('form/handlers14', false)
+    this.$store.dispatch('form/handlers15', true)
+    this.$store.dispatch('form/handlers16', false)
+  },
   data: () => ({
     celander: '',
     types: 'date',
