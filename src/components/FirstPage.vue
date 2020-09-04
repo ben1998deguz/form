@@ -4,7 +4,7 @@
       <b-form-group class="form-step step-1 step-active w-100">
         <h3 class="form-title">Objet de l'emprunt*</h3>
         <b-button-group>
-          <b-button class="ml-5 form-button" :click="handler1('Résidence principale')">Résidence principale</b-button>
+          <b-button :class="{ active: isActive }" class="ml-5 form-button" :click="handler1('Résidence principale')">Résidence principale</b-button>
           <b-button class="ml-5 form-button" :click="handler2('Résidence secondaire')">Résidence secondaire</b-button>
           <b-button class="ml-5 form-button" :click="handler3('Investissement locatif')">Investissement locatif</b-button>
         </b-button-group>
@@ -41,8 +41,10 @@
         <b-button-group>
           <b-form-select class="form-button" v-model="selectedTime" :options="optionsTime"></b-form-select>
         </b-button-group>
+      </b-form-group>
+      <b-form-group class="form-step step-1 next">
         <b-button-group>
-          <b-button class="form-button">
+          <b-button v-on:click="second()" class="form-button form-next">
             Etape suivante
             <b-icon icon="arrow-right"></b-icon>
           </b-button>
@@ -58,10 +60,9 @@ import { mapState } from 'vuex';
 export default {
   name: 'FirstPage',
   created() {
-    this.$store.state.form.step1.isActive = false
   },
   computed: mapState({
-    isActive: (state) => state.form.step1.isActive,
+  //  isActive: (state) => state.form.step1.isActive,
   }),
   data: () => ({
     selectedBank: null,
@@ -107,18 +108,22 @@ export default {
       { value: '28', text: '28 ans' },
       { value: '29', text: '29 ans' },
       { value: '30', text: '30 ans' }
-    ]
+    ],
+    isActive: false
   }),
   methods: {
     handler1(data) {
       this.$store.dispatch('form/handlers1', data)
-      this.$store.state.form.step1.isActive = true
+      this.isActive = true
     },
     handler2(data) {
       this.$store.dispatch('form/handlers2', data)
     },
     handler3(data) {
       this.$store.dispatch('form/handlers3', data)
+    },
+    second() {
+      this.$router.push('/secondPage');
     }
   }
 }
@@ -128,7 +133,6 @@ export default {
 .form-inner {
   margin-top: 200px;
   text-align: center;
-  border: 1px solid black;
   background-color: lightgrey;
 }
 
@@ -139,6 +143,13 @@ export default {
 .form-title {
   margin: 20px;
   margin-bottom: 20px;
+}
+
+.form-step {
+  box-shadow: 50px !important;
+  background-color: white;
+  margin-top: 300px;
+  padding: 15px;
 }
 
 .form-button {
@@ -160,7 +171,7 @@ export default {
   width: 200px;
   height: 70px;
   color: #004161 !important;
-  background-color: lightgray !important;
+  background-color: white !important;
   border: none;
   border-bottom: 3px solid #ee7101;
   text-align: center;
@@ -174,11 +185,32 @@ export default {
 }
 
 #euro {
+  display: flex;
+  align-items: flex-end;
   content: "\20AC";
+  margin: 0;
+  padding: 0;
+  height: 65px;
+  font-size: 30px;
 }
 
 #percent {
+  display: flex;
+  align-items: flex-end;
   content: "\0025";
+  margin: 0;
+  padding: 0;
+  height: 65px;
+  font-size: 30px;
+}
+
+.next {
+  background-color: #ee7101 !important;
+  height: 150px;
+}
+
+.form-next {
+  margin-top: 35px;
 }
 </style>
 

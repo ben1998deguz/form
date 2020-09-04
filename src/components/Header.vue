@@ -2,7 +2,7 @@
   <div>
     <header class="cbo-header">
       <div class="header-steps">
-          <h1 class="steps-title" style="color: white">ESTIMEZ VOTRE ASSURANCE DE PRÊT IMMOBILIER</h1>
+          <h1 class="steps-title">ESTIMEZ VOTRE ASSURANCE DE PRÊT IMMOBILIER</h1>
           <div class="steps-lists">
             <div class="steps-list">
                 <button class="list-el"><span>1</span></button>
@@ -49,6 +49,10 @@
   background-color: #ee7101;
 }
 
+.steps-title {
+  color: white;
+}
+
 .steps-lists {
   background-color: #fff;
   height: 200px;
@@ -60,13 +64,13 @@
   display: inline-block;
   height: 73px;
   width: 73px;
-  margin-left: 10px;
   border-radius: 999px;
   background-color: #ee7101;
   border-color: #004161;
   color: white;
   margin-top:15px;
   margin-bottom: 15px;
+  margin-left: 15px;
   font-size: 44px;
 }
 
