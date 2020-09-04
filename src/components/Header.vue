@@ -5,9 +5,9 @@
           <h1 class="steps-title">ESTIMEZ VOTRE ASSURANCE DE PRÊT IMMOBILIER</h1>
           <div class="steps-lists">
             <div class="steps-list">
-                <button class="list-el"><span>1</span></button>
-                <button class="list-el white"><span>2</span></button>
-                <button class="list-el white"><span>3</span></button>
+                <button class="list-el" :class="{ active: isActive1 }"><span>1</span></button>
+                <button class="list-el" :class="{ active: isActive2 }"><span>2</span></button>
+                <button class="list-el" :class="{ active: isActive3 }"><span>3</span></button>
             </div>
             <div class="steps-current">
               <span>Votre projet</span>
@@ -19,7 +19,15 @@
 </template>
 
 <script>
-  
+import { mapState } from 'vuex';
+
+export default {
+  computed: mapState ({
+    isActive1: (state) => state.form.isActive1,
+    isActive2: (state) => state.form.isActive2,
+    isActive3: (state) => state.form.isActive3,
+  }),
+}
 </script>
 
 <style>
@@ -47,6 +55,7 @@
   height: 350px;
   justify-content: center;
   background-color: #ee7101;
+  border: 1px solid #004161;
 }
 
 .steps-title {
@@ -65,10 +74,10 @@
   height: 73px;
   width: 73px;
   border-radius: 999px;
-  background-color: #ee7101;
-  border-color: #004161;
-  color: white;
-  margin-top:15px;
+  background-color: white;
+  border-color: #ee7101;
+  color: #004161;
+  margin-top:25px;
   margin-bottom: 15px;
   margin-left: 15px;
   font-size: 44px;
@@ -79,8 +88,8 @@
   color: #004161;
 }
 
-.white {
-  background-color: white;
+.active {
+  background-color: #004161;
   border-color: #ee7101;
   color: #004161;
 }
