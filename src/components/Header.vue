@@ -63,7 +63,7 @@ export default {
   height: 350px;
   justify-content: center;
   background-color: #ee7101;
-  border: 1px solid #004161;
+  border: 4px solid #004161;
 }
 
 .steps-title {
@@ -89,6 +89,7 @@ export default {
   margin-bottom: 15px;
   margin-left: 15px;
   font-size: 44px;
+  outline: none !important;
 }
 
 .steps-current {
@@ -100,6 +101,12 @@ export default {
   background-color: #004161;
   border-color: #ee7101;
   color: #004161;
+}
+
+@media screen and (max-width: 1000px) {
+  .cbo-header {
+    width: 100%;
+  }
 }
 
 </style>

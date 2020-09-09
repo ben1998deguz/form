@@ -22,6 +22,7 @@
     justify-content: center;
     padding-top: 50px;
     height: 200px;
+    width: 100%;
   }
 
   a {

@@ -1,43 +1,45 @@
 <template>
   <div>
     <b-form class="form-inner">
-      <b-form-group class="form-step step-1 step-active w-100">
-        <h3 class="form-title">Objet de l'emprunt*</h3>
+      <b-form-group class="form-step step-1 step-active">
+        <h3 class="form-title text">Objet de l'emprunt*</h3>
         <b-button-group>
-          <b-button class="ml-5 form-button" @click="handler1('Résidence principale')" :class="{ active: isActive1Step1 }">Résidence principale</b-button>
-          <b-button class="ml-5 form-button" @click="handler2('Résidence secondaire')" :class="{ active: isActive2Step1 }">Résidence secondaire</b-button>
-          <b-button class="ml-5 form-button" @click="handler3('Investissement locatif')" :class="{ active: isActive3Step1 }">Investissement locatif</b-button>
+          <div>
+            <b-button class="ml-5 form-button" @click="handler1('Résidence principale')" :class="{ active: isActive1Step1 }">Résidence principale</b-button>
+            <b-button class="ml-5 form-button" @click="handler2('Résidence secondaire')" :class="{ active: isActive2Step1 }">Résidence secondaire</b-button>
+            <b-button class="ml-5 form-button" @click="handler3('Investissement locatif')" :class="{ active: isActive3Step1 }">Investissement locatif</b-button>
+          </div>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive4Step1 }">
-        <h3>Nature du projet*</h3>
+        <h3 class="text">Nature du projet*</h3>
         <b-button-group>
           <b-button class="ml-5 form-button" @click="active1('Assurer un nouveau prêt')" :class="{ active: isActive1Step2 }">Assurer un nouveau prêt</b-button>
           <b-button class="ml-5 form-button" @click="active2('Assurer un prêt déjà signé')" :class="{ active: isActive2Step2 }">Assurer un prêt déjà signé</b-button>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive3Step2 }">
-        <h3>Banque *</h3>
+        <h3 class="text">Banque *</h3>
         <b-button-group>
           <b-form-select class="form-button" @change="active3()" v-model="selectedBank" :options="optionsBank"></b-form-select>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive1Step3 }">
-        <h3>Montant emprunté*</h3>
+        <h3 class="text">Montant emprunté*</h3>
         <b-button-group>
          <input v-model="euro" @change="active4()" type="text" class="form-input" />
          <span id="euro">&#8364;</span>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive1Step4 }">
-        <h3>OTaux d'intérêt*</h3>
+        <h3 class="text">OTaux d'intérêt*</h3>
         <b-button-group>
            <input v-model="percent" @change="active5()" type="text" class="form-input" />
            <span id="percent">&#37;</span>
         </b-button-group>
       </b-form-group>
       <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive1Step5 }">
-        <h3>Durée totale du prêt*</h3>
+        <h3 class="text">Durée totale du prêt*</h3>
         <b-button-group>
           <b-form-select @change="active6()" class="form-button" v-model="selectedTime" :options="optionsTime"></b-form-select>
         </b-button-group>
@@ -175,13 +177,13 @@ export default {
 </script>
 
 <style>
+.text {
+  color: #004161 !important;
+}
+
 .form-inner {
   margin-top: 200px;
   text-align: center;
-}
-
-.form-button {
-  border-radius:50px;
 }
 
 .form-title {
@@ -192,22 +194,24 @@ export default {
 .form-step {
   box-shadow: 50px !important;
   background-color: white;
-  margin-top: 300px;
+  margin-top: 150px;
   padding: 15px;
+  border-bottom: 3px solid #ee7101;
 }
 
 .form-button {
   border-radius: 50px !important;
-  width: 300px;
-  height: 70px;
+  width: 70%;
+  height: 100px;
   color: #004161 !important;
   background-color: white !important;
   border-color: #ee7101 !important;
   margin-bottom: 15px;
+  font-size: 15px !important;
 }
 
 .form-button:hover {
-  color: white;
+  color: white !important;
   background-color: #ee7101 !important;
   border-color: #004161 !important;
 }
@@ -254,20 +258,39 @@ export default {
 }
 
 .zeroMargin {
-  padding-top: 70px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 0.3s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards; 
+  /* margin-left: 35%; */
+  padding-top: 10px;
   position: fixed;
-  top: 60px;
   z-index: 999;
   background-color: white;
-  height: 80%;
+  height: 100%;
+  width: 100vw;
+  margin-left: -10;
+}
+
+@keyframes example {
+  from {top: 300px}
+  to {top: 55px}
 }
 
 select option {
   background-color: white;
+  color: #004161 !important;
 }
 
 h3 {
   margin-bottom: 35px !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .zeroMargin {
+    padding-right: 250px;
+  }
 }
 </style>
 

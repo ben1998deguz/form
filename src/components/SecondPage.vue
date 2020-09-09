@@ -1,40 +1,34 @@
 <template>
   <div>
-    <pre>
-      {{celander}}
-      {{referenceNumber}}
-      {{selectedProfessional}}
-      {{selectedCheck}}
-      </pre>
-    <b-form class="form-inner">
-      <b-form-group class="form-step w-100">
+    <b-form @submit.prevent class="form-inner">
+      <b-form-group class="form-step">
         <h3>Date de naissance*</h3>
         <b-button-group>
-          <input v-model="celander" @change="active1()" class="form-input" :id="`type-${types}`" :type="types" />
+          <b-input v-model="celander" @change="active1()" class="form-input" type="date" />
         </b-button-group>
       </b-form-group>
-      <b-form-group class="form-step w-100" :class="{ zeroMargin: isActive1Step1 }">
+      <b-form-group class="form-step w-100 mx-auto" :class="{ zeroMargin: isActive1Step1 }">
         <h3>Code postal*</h3>
         <b-button-group>
-          <input type="number" v-model="referenceNumber" @change="active2()" class="form-input" />
+          <b-input v-model="referenceNumber" @change="active2()" class="form-input" type="number" />
         </b-button-group>
       </b-form-group>
-      <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive1Step2 }">
+      <b-form-group class="form-step step-1 step-active w-100 mx-auto" :class="{ zeroMargin: isActive1Step2 }">
         <h3>Durée totale du prêt*</h3>
         <b-button-group>
           <b-form-select @change="active3()" class="form-button" v-model="selectedProfessional" :options="optionsProfessional"></b-form-select>
         </b-button-group>
       </b-form-group>
-      <b-form-group class="form-step step-1 step-active w-100" :class="{ zeroMargin: isActive1Step3 }">
+      <b-form-group class="form-step step-1 step-active w-100 mx-auto" :class="{ zeroMargin: isActive1Step3 }">
         <h3>Durée totale du prêt*</h3>
         <b-form-checkbox-group v-model="selectedCheck">
           <b-form-checkbox @change="active4()" value="false">Non</b-form-checkbox>
           <b-form-checkbox @change="active4()" value="true">Oui</b-form-checkbox>
         </b-form-checkbox-group>
       </b-form-group>
-       <b-form-group class="form-step step-1 w-100" :class="{ zeroMargin: isActive1Step4 }">
+       <b-form-group class="form-step step-1 w-100 mx-auto" :class="{ zeroMargin: isActive1Step4 }">
         <b-button-group>
-          <b-button v-on:click="third()" class="form-button form-next">
+          <b-button @click="third()" class="form-button form-next">
             Etape suivante
             <b-icon icon="arrow-right"></b-icon>
           </b-button>
@@ -57,7 +51,6 @@ export default {
   },
   data: () => ({
     celander: '',
-    types: 'date',
     referenceNumber: '',
     selectedProfessional: null,
     optionsProfessional: [
@@ -92,7 +85,7 @@ export default {
       this.$store.dispatch('form/handlers16', true)
     },
     active1() {
-      this.isActive1Step1 = true;
+      this.isActive1Step1 = true
       this.$store.dispatch('form/handlers10', this.celander)
     },
     active2() {
@@ -118,12 +111,11 @@ export default {
   text-align: center;
 }
 
-  .form-step {
-  text-align: center;
+ .form-step {
+  box-shadow: 50px !important;
   background-color: white;
-  margin-top: 300px;
   padding: 15px;
-  border-radius: 30px;
+  border-bottom: 3px solid #ee7101;
 }
 
 .form-input {
@@ -138,12 +130,24 @@ export default {
 }
 
 .zeroMargin {
-  padding-top: 70px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 0.4s;
+  /* animation-delay: 2s; */
+  animation-fill-mode: forwards; 
+  /* margin-left: 35%; */
+  padding-top: 10px;
   position: fixed;
-  top: 60px;
   z-index: 999;
   background-color: white;
-  height: 60%;
+  height: 80%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .zeroMargin {
+    padding-right: 255px;
+  }
 }
 
 select option {
